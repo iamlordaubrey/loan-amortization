@@ -9,8 +9,14 @@ from users.models import Customer
 class CustomUserManagerTest(TestCase):
     def test_create_user(self):
         User = get_user_model()
-        user = User.objects.create_user(email="test@user.com", password="foo")
+        password = "foo"
+        user = User.objects.create_user(email="test@user.com", password=password)
         self.assertEqual(user.email, "test@user.com")
+        self.assertTrue(user.password)
+
+        # Check that password isn't in plain text
+        self.assertNotEqual(user.password, password)
+
         self.assertTrue(user.is_active)
         self.assertFalse(user.is_staff)
         self.assertFalse(user.is_superuser)
@@ -47,12 +53,12 @@ class CustomerTest(TestCase):
 
         # Create first customer
         url = reverse('customer-create')
-        self.client.post(url, {'email': 'customer1@user.com', 'password': 'foo'})
+        self.client.post(url, {'email': 'customer1@user.com'})
 
     def test_create_customer(self):
         # Create second customer
         url = reverse('customer-create')
-        response = self.client.post(url, {'email': 'customer2@user.com', 'password': 'foo'})
+        response = self.client.post(url, {'email': 'customer2@user.com'})
 
         self.assertEqual(response.status_code, 201)
         self.assertEqual(Customer.objects.count(), 2)

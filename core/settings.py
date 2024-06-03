@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'loans',
     'users',
+    'drf_yasg',
 ]
 
 AUTH_USER_MODEL = "users.Customer"

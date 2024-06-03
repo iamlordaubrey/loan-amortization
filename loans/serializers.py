@@ -5,6 +5,8 @@ from loans.models import LoanOffer
 
 
 class LoanOfferSerializer(serializers.ModelSerializer):
+    # Setting coerce_to_string to False overrides the default representation of decimals as strings
+    interest_rate = serializers.DecimalField(max_digits=50, decimal_places=2, coerce_to_string=False)
 
     class Meta:
         model = LoanOffer
@@ -14,8 +16,10 @@ class LoanOfferSerializer(serializers.ModelSerializer):
 class LoanOfferCalculatorSerializer(serializers.Serializer):
     loan_amount = serializers.IntegerField()
     loan_term = serializers.IntegerField()
-    interest_rate = serializers.DecimalField(max_digits=50, decimal_places=2)
-    monthly_payment = serializers.DecimalField(max_digits=50, decimal_places=2, read_only=True)
+
+    # Setting coerce_to_string to False overrides the default representation of decimals as strings
+    interest_rate = serializers.DecimalField(max_digits=50, decimal_places=2, coerce_to_string=False)
+    monthly_payment = serializers.DecimalField(max_digits=50, decimal_places=2, read_only=True, coerce_to_string=False)
 
     def create(self, validated_data):
         """

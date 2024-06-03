@@ -15,6 +15,7 @@ class LoanOfferCalculate(generics.CreateAPIView):
     Since the calculated monthly payment is not being saved, overriding the Create method to
     return status code 200 OK, rather than 201 CREATED.
     """
+
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
