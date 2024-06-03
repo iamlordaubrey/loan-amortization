@@ -41,8 +41,8 @@ h3 {
 
 input[type=text], input[type=number], select {
   width: 100%;
-  padding: 12px 12px;
-  margin: 5px 0 15px;
+  padding: 12px;
+  margin: 5px 0 20px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -68,8 +68,24 @@ input[type=submit]:hover {
   column-gap: 10px;
 }
 
-.result {
+.result-section {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.result {
+  font-size: xx-large;
+  font-weight: bolder;
+  font-style: italic;
+  color: #2b542c;
+  text-decoration: underline;
+}
+
+.error-message {
+  margin-top: -20px;
+  font-size: 13px;
+  color: #e64646;
+  display: block;
+  position: absolute;
 }
