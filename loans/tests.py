@@ -33,5 +33,5 @@ class LoanOfferTest(TestCase):
         url = reverse('loan-calculate')
         response = self.client.post(url, data=payload)
 
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(float(response.data['monthly_payment']), 845.53)

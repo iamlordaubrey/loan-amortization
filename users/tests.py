@@ -53,12 +53,12 @@ class CustomerTest(TestCase):
 
         # Create first customer
         url = reverse('customer-create')
-        self.client.post(url, {'email': 'customer1@user.com'})
+        self.client.post(url, {'email': 'customer1@user.com', 'password': 'foo'})
 
     def test_create_customer(self):
         # Create second customer
         url = reverse('customer-create')
-        response = self.client.post(url, {'email': 'customer2@user.com'})
+        response = self.client.post(url, {'email': 'customer2@user.com', 'password': 'foo'})
 
         self.assertEqual(response.status_code, 201)
         self.assertEqual(Customer.objects.count(), 2)

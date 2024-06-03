@@ -19,6 +19,9 @@ setup:
 	test -f requirements.txt || make requirements.txt
 	source $(VENV)/bin/activate && pip install -r requirements.txt
 
+runserver:
+	source $(VENV)/bin/activate && ./manage.py runserver 0.0.0.0:8000
+
 pip_sync: requirements.txt
 	source $(VENV)/bin/activate && pip-sync requirements.txt
 
