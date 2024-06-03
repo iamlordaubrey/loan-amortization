@@ -44,3 +44,9 @@ npm run test
 | Version Control | git                                    |
 
 
+#### Assumptions/Decisions
+- I made use of [MSW](https://mswjs.io/). It's a mocking library that intercepts
+calls at the network layer, resulting in a much cleaner codebase
+- I made use of Vitest. It's generally faster, much cleaner, compatible with 
+ECMAScript Modules (more modern), and helps avoid a hacky solution. It also helps
+considering I built the frontend using Vite.
