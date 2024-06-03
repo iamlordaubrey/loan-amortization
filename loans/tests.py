@@ -23,3 +23,15 @@ class LoanOfferTest(TestCase):
         self.assertEqual(response.status_code, 201)
         self.assertEqual(LoanOffer.objects.count(), 1)
         self.assertEqual(LoanOffer.objects.get().customer, customer)
+
+    def test_calculate_loan_offer(self):
+        payload = {
+            'loan_amount': 5000,
+            'interest_rate': 5,
+            'loan_term': 6
+        }
+        url = reverse('loan-calculate')
+        response = self.client.post(url, data=payload)
+
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(float(response.data['monthly_payment']), 845.53)

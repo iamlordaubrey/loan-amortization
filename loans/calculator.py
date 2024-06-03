@@ -1,4 +1,7 @@
-def calculate_monthly_payment(principal, annual_interest_rate, loan_term_months) -> float:
+import decimal
+
+
+def calculate_monthly_payment(principal, annual_interest_rate, loan_term_months) -> decimal.Decimal:
     """
     Calculate the monthly payment for a loan using the standard loan amortization formula.
 
