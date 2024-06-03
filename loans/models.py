@@ -16,7 +16,7 @@ class LoanOffer(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 
     currency = models.CharField(max_length=3, choices=Currency, default=Currency.EURO)
-    interest_rate = models.DecimalField(max_digits=50, decimal_places=2, default=1)
+    interest_rate = models.DecimalField(max_digits=50, decimal_places=2)
 
     # smallest currency denomination
     loan_amount = models.IntegerField()
